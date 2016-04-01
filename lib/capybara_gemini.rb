@@ -1,7 +1,3 @@
-require 'capybara_gemini/comparator'
-require 'capybara_gemini/current_screenshot'
-require 'capybara_gemini/reference_screenshot'
-
 module CapybaraGemini
   class << self
     def configure

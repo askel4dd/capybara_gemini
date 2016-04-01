@@ -1,4 +1,3 @@
-require 'capybara_gemini'
 require 'capybara_gemini/dsl'
 require 'rspec/core'
 
