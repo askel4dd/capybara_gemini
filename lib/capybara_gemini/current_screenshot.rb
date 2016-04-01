@@ -1,6 +1,6 @@
 module CapybaraGemini
   class CurrentScreenshot < Screenshot
-    SCREENSHOTS_PATH = Rails.root
+    SCREENSHOTS_PATH = Capybara.save_and_open_page_path
 
     attr_reader :path
 

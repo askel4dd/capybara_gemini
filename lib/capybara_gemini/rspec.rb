@@ -1,5 +1,4 @@
-require 'capybara_gemini/dsl'
-require 'rspec/core'
+require 'capybara_gemini'
 
 RSpec.configure do |config|
   config.include CapybaraGemini::DSL, type: :regression

@@ -5,7 +5,7 @@ module CapybaraGemini
         reference_screenshot_stream = ReferenceScreenshot.new(file_name, page).fetch
         current_screenshot_stream = CurrentScreenshot.new(file_name, page).create
         @comparator = Comparator.new(reference_screenshot_stream, current_screenshot_stream).compare
-        @comparator.difference.present? ? @comparator.difference.save('difference') : @comparator.valid?
+        @comparator.valid?
       end
 
       failure_message do |*|
