@@ -22,7 +22,7 @@ module CapybaraGemini
           end
         end
 
-        @file_to_compare.save('difference.png')
+        @file_to_compare.save(File.join(Dir.tmpdir, 'test', 'difference.png'))
       end
       self
     end

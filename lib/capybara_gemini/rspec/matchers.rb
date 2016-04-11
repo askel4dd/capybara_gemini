@@ -1,10 +1,10 @@
 module CapybaraGemini
-  module DSL
-    RSpec::Matchers.define :match_reference do |file_name|
+  module RSpecMatchers
+    ::RSpec::Matchers.define :match_reference do |file_name|
       match do |page|
         reference_screenshot_stream = ReferenceScreenshot.new(file_name, page).fetch
-        current_screenshot_stream = CurrentScreenshot.new(file_name, page).create
-        @comparator = Comparator.new(reference_screenshot_stream, current_screenshot_stream).compare
+        current_screenshot_stream   = CurrentScreenshot.new(file_name, page).create
+        @comparator                 = Comparator.new(reference_screenshot_stream, current_screenshot_stream).compare
         @comparator.valid?
       end
 

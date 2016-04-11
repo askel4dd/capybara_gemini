@@ -3,7 +3,6 @@ module CapybaraGemini
   autoload :Screenshot, 'capybara_gemini/screenshot'
   autoload :ReferenceScreenshot, 'capybara_gemini/reference_screenshot'
   autoload :CurrentScreenshot, 'capybara_gemini/current_screenshot'
-  autoload :DSL, 'capybara_gemini/dsl'
 
   class << self
     def configure
