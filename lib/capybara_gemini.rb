@@ -10,11 +10,19 @@ module CapybaraGemini
     end
 
     def action=(action)
-      @action ||= action
+      @_action ||= action
     end
 
     def action
-      @action || ENV['CAPYBARA_GEMINI_ACTION'] || 'test'
+      @_action || ENV['CAPYBARA_GEMINI_ACTION'] || 'test'
+    end
+
+    def reference_screenshots_path=(path)
+      @_reference_screenshots_path ||= path
+    end
+
+    def reference_screenshots_path
+      @_reference_screenshots_path
     end
 
     def update?
