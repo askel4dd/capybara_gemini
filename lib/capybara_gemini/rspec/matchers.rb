@@ -2,9 +2,9 @@ module CapybaraGemini
   module RSpecMatchers
     ::RSpec::Matchers.define :match_reference do |file_name|
       match do |page|
-        reference_screenshot_stream = ReferenceScreenshot.new(file_name, page).fetch
-        current_screenshot_stream   = CurrentScreenshot.new(file_name, page).create
-        @comparator                 = Comparator.new(reference_screenshot_stream, current_screenshot_stream).compare
+        reference_screenshot = ReferenceScreenshot.new(file_name, page).fetch
+        current_screenshot = CurrentScreenshot.new(file_name, page).create
+        @comparator = Comparator.new(reference_screenshot, current_screenshot).compare
         @comparator.valid?
       end
 

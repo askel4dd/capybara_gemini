@@ -1,24 +1,25 @@
 module CapybaraGemini
   class ReferenceScreenshot < Screenshot
 
-    attr_reader :path
+    attr_reader :file
 
     def initialize(name, page)
-      @path = screenshot_path(name)
+      @absolute_path = absolute_screenshot_path(name)
       @page = page
     end
 
     def fetch
-      if !File.exist?(path) || CapybaraGemini.update?
-        @page.driver.save_screenshot(path, full: true)
+      if !File.exist?(@absolute_path) || CapybaraGemini.update?
+        @page.driver.save_screenshot(@absolute_path, full: true)
       end
-      ChunkyPNG::Image.from_file path
+      @file = ChunkyPNG::Image.from_file(@absolute_path)
+      self
     end
 
     private
 
-    def screenshot_path(file_name)
-      File.join(Rails.root.join('spec/fixtures/screenshots/'), file_name + '.png')
+    def absolute_screenshot_path(file_name)
+      File.join(CapybaraGemini.reference_screenshots_path, file_name + '.png')
     end
   end
 end

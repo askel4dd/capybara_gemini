@@ -21,7 +21,7 @@ RSpec.describe CapybaraGemini::RSpecMatchers, type: :feature, js: true do
         visit '/'
 
         expect(page).to match_reference('new_reference_screenshot')
-        expect(File).to exist(Rails.root.join('spec/fixtures/screenshots', 'new_reference_screenshot.png'))
+        expect(File).to exist(File.join(CapybaraGemini.reference_screenshots_path, 'new_reference_screenshot.png'))
       end
     end
   end
