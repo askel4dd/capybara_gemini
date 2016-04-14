@@ -23,4 +23,9 @@ RSpec.configure do |config|
       end
     end
   end
+
+  config.before(:each, :js) do
+    window = Capybara.current_session.driver.browser.manage.window
+    window.resize_to(1024, 768) # width, height
+  end
 end
