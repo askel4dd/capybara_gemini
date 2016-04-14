@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe CapybaraGemini::RSpecMatchers, type: :feature, js: true do
   describe 'match_reference matcher' do
-    context 'reference screenshot is present' do
+    context 'reference screenshot is present', skip: true do
       it 'compare reference and current screenshot' do
         expect(File).to exist(File.join(CapybaraGemini.reference_screenshots_path, 'root_page.png'))
 
