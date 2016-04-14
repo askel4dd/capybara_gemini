@@ -8,13 +8,19 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |example|
-    example.metadata[:dir_entries] = Dir.entries(CapybaraGemini.reference_screenshots_path)
+    example.metadata[:dir_entries] = Pathname.new(CapybaraGemini.reference_screenshots_path).children.map(&:to_s)
   end
 
   config.after(:each) do |example|
-    files_to_delete = Dir.entries(CapybaraGemini.reference_screenshots_path) - example.metadata[:dir_entries]
-    files_to_delete.each do |file_name|
-      File.delete(File.join(CapybaraGemini.reference_screenshots_path, file_name))
+    current_entries = Pathname.new(CapybaraGemini.reference_screenshots_path).children.map(&:to_s)
+    entries_to_delete = current_entries - example.metadata[:dir_entries]
+    entries_to_delete.each do |entry_name|
+      entry = Pathname.new(entry_name)
+      if entry.file?
+        entry.delete
+      else
+        entry.rmdir
+      end
     end
   end
 end

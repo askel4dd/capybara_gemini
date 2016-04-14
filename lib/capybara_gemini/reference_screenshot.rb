@@ -1,7 +1,7 @@
 module CapybaraGemini
   class ReferenceScreenshot < Screenshot
 
-    attr_reader :file
+    attr_reader :absolute_path, :file
 
     def initialize(name, page)
       @absolute_path = absolute_screenshot_path(name)

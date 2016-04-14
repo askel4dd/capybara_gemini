@@ -1,7 +1,7 @@
 module CapybaraGemini
   class CurrentScreenshot < Screenshot
 
-    attr_reader :dirname, :file
+    attr_reader :absolute_path, :dirname, :file
 
     def initialize(name, page)
       @absolute_path = screenshot_absolute_path(name)
@@ -20,7 +20,7 @@ module CapybaraGemini
     def screenshot_absolute_path(file_name)
       path = File.join(Dir.tmpdir, file_name)
       FileUtils.mkdir_p(path)
-      path + 'current.png'
+      File.join(path, 'current.png')
     end
   end
 end
