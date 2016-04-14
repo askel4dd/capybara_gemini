@@ -56,6 +56,8 @@ module CapybaraGemini
         elsif !file_to_compare
           :missing_current
         elsif reference_size != current_size
+          puts reference_size
+          puts current_size
           :different_size
         elsif reference_file != file_to_compare
           :different

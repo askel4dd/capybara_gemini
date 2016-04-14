@@ -7,7 +7,7 @@ RSpec.describe CapybaraGemini::RSpecMatchers, type: :feature, js: true do
         expect(File).to exist(File.join(CapybaraGemini.reference_screenshots_path, 'root_page.png'))
 
         visit '/'
-
+        puts Capybara.current_session.driver.browser.manage.window.size
         expect(page).to match_reference('root_page')
       end
 
